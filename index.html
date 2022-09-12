@@ -47,23 +47,9 @@
                 <div class="card__todo">
                     <!-- Uncompleted tasks -->
                     <ul class="todo" id="todo">
-                        <li><h3>Ăn</h3>
-                        <div class="button">
-                            <button style="border: none;">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                            <button style="border: none;">
-                                <i class="fa-regular fa-circle-check"></i>
-                            </button>
-                        </div>
-                        </li>
-                        <li><h3>Ăn</h3></li>
-                        <li><h3>Ăn</h3></li>
-                        <li><h3>Ăn</h3></li>
                     </ul>
                     <!-- Completed tasks -->
                     <ul class="todo" id="completed">
-                        <li><h3 class="text-success">Làm Bài</h3></li>
                     </ul>
                 </div>
 
@@ -81,7 +67,6 @@
         $(function () {
             $('.toggle-btn').click(function () {
                 $('.filter-btn').toggleClass('open');
-
             });
 
             $('.filter-btn a').click(function () {

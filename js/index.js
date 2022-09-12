@@ -1,6 +1,6 @@
 import { toDo } from "./modal/todo.js";
 import { Completed } from "./modal/completed.js";
-import { validateCheck } from "./validate/validate.js";
+// import { validateCheck } from "./validate/validate.js";
 
 let jobs = new toDo();
 let jobsCompleted = new Completed();
@@ -8,17 +8,20 @@ let jobsCompleted = new Completed();
 // Thêm việc
 document.getElementById("addItem").onclick = () => {
     let inputTag = document.getElementById("newTask");
-
-    let valid = true;
-    valid = validateCheck(jobs.arrJob)
-    & validateCheck(jobsCompleted.arrComp)
     
+
+    var valid = true;
+    valid = validateCheck(jobs.arrJob)
+    && validateCheck(jobsCompleted.arrComp);
+    console.log(valid)
+    
+
     if (valid == false) {
         return;
     }
-
-    jobs.addThings(inputTag.value);
     
+    jobs.addThings(inputTag.value);
+
     jobs.setStorage();
 
     jobs.renderJobs('todo', jobs.arrJob);
@@ -94,4 +97,17 @@ window.onload = () => {
     jobs.renderJobs('todo');
     jobsCompleted.getStorage();
     jobsCompleted.renderJobs('completed');
+}
+
+
+let validateCheck = (arr) => {
+    let input = document.getElementById("newTask")
+    for (let index = 0; index < arr.length; index++) {
+        if (arr[index] === input.value) {
+            document.querySelector("#validate").innerHTML = 'This job has already!!'
+            return false;
+        }
+        document.querySelector("#validate").innerHTML = ''
+        return true;
+    }
 }
